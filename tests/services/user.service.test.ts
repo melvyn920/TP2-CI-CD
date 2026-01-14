@@ -8,7 +8,7 @@ describe('User Service', () => {
     const user = await createUser('testuser', 'test@mail.com', '1234');
     const fetched = await getUser(user.id);
 
-    expect(fetched).toBeDefined();
-    expect(fetched.username).toBe('testuser');
+    expect(fetched).not.toBeNull();
+    expect(fetched!.username).toBe('testuser');
   });
 });
