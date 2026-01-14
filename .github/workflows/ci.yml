@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build-and-test:
@@ -43,8 +43,8 @@ jobs:
       - name: Generate Prisma client
         run: npx prisma generate
 
-      - name: Run migrations
-        run: npx prisma migrate deploy || echo "No migrations to run"
+      - name: Push Prisma schema to DB
+        run: npx prisma db push
 
       - name: Run tests
         run: npm test
